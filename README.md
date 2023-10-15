@@ -1,11 +1,12 @@
-[[_TOC_]]
-
-
-
 
 
 # Devops Engineer Code Challenge
 
+
+Índice
+- [Challenge 1 - Chart de Helm](#challenge-1---chart-de-helm)
+- [Challenge 2 - Desplegar con Terraform](#challenge-2---desplegar-con-terraform)
+- [Anexo: desplegar entorno](#anexo-desplegar-entorno)
 
 
 ## Challenge 1 - Chart de Helm
@@ -26,7 +27,7 @@ Modifica el "Ping Helm Chart" para desplegar la aplicación con las siguientes r
 
 #### **Solución**
 
-El Chart se encuentra en challenge1
+El Chart se encuentra en [challenge1](https://github.com/jmelg/devops-challenge/tree/master/challenge1)
 
 Dado que no se especifica cual es el "Ping Helm Chart" ni se facilita ningún enlace, se va a crear y desplegar un Chart de ejemplo:
 
@@ -72,7 +73,9 @@ kubectl -n test scale deployment ping --replicas=3
 
 Verificamos que se comporta como se espera:
 
-IMAGENES
+![pods](https://github.com/jmelg/devops-challenge/blob/master/img/ch1-pods.png)
+
+![events](https://github.com/jmelg/devops-challenge/blob/master/img/ch1-events.png)
 
 Finalmente la empaquetamos:
 
@@ -151,16 +154,14 @@ module "chart" {
 
 #### Solución
 
-Para el desarrollo y validación del módulo se ha simulado un entorno en Azure con la cuenta gratuita, donde se ha desplegado:
+Para el desarrollo y validación del módulo se ha simulado un entorno en Azure con la cuenta gratuita ([anexo](#anexo-desplegar-entorno)), donde se ha desplegado:
 
 - Un ACR de referencia
 - Un instancia AKS+ACR
 
-Para más info ver el anexo
+El módulo se encuentra en [challenge2](https://github.com/jmelg/devops-challenge/tree/master/challenge2)
 
-El módulo se encuentra en challenge2
-
-En definitiva, para lanzar el despliegue debemos
+En definitiva, para lanzar el despliegue:
 
 ```bash
 # Inicializar el directorio de trabajo
@@ -198,7 +199,7 @@ replicaset.apps/ping-657bdc6fc9   1         1         1       81s
 
 
 
-
+![registry-instance](https://github.com/jmelg/devops-challenge/blob/master/img/ch2-registry.png)
 
 
 
@@ -206,9 +207,9 @@ replicaset.apps/ping-657bdc6fc9   1         1         1       81s
 
 # Anexo: desplegar entorno
 
-Haciendo uso de la licencia gratuita, se ha simulado en entorno para poder validar el proceso
+Haciendo uso de la licencia gratuita, se ha simulado el entorno para poder validar el proceso
 
-Todos los despliegues se han realizado con terraform y los ficheros se encuentran en anexo
+Todos los despliegues se han realizado con terraform y los ficheros se encuentran en [anexo](https://github.com/jmelg/devops-challenge/tree/master/anexo)
 
 
 
@@ -218,7 +219,7 @@ La única especificación es que el formato debe ser: reference.azurecr.io
 
 Usaremos este ACR cono repositorio principal. Aquí se encontraran todas las imágenes y charts.
 
-
+![acr-reference](https://github.com/jmelg/devops-challenge/blob/master/img/anexo-acr-reference.png)
 
 
 
@@ -228,7 +229,7 @@ Como disponemos de la versión gratuita, se ha creado un clúster de kubernetes 
 
 En cuanto al ACR, el único requisito es que tuviera el formato instance.azurecr.io, que debe ser único globalmente en Azure y ya estaba cogido, por lo que se ha nombrado como `instance20231014`
 
-
+![anexo-aks-acr-instance](https://github.com/jmelg/devops-challenge/blob/master/img/anexo-aks-acr-instance.png)
 
 
 
