@@ -1,6 +1,5 @@
 # Con values
 acr_server = "instance20231014.azurecr.io"
-acr_server_subscription = "05b9958c-0660-4bc2-b739-33f3a0f3598b"
 acr_server_subscription = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 
 source_acr_client_id = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
